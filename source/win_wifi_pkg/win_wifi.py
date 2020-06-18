@@ -26,7 +26,6 @@ class win_WiFi_class:
 
             print("\n  Scan result: {:d}".format(scan_result))
 
-    #   fafafa
             print("scan end")
 
             try:
