@@ -1,7 +1,8 @@
 import subprocess
 import sys
 import re
-from win32wifi import Win32Wifi as ww
+# from win32wifi import Win32Wifi as ww
+from win32wifi.Win32Wifi import *
 
 
 class win_WiFi_class:
@@ -20,7 +21,7 @@ class win_WiFi_class:
             try:
                 scan_result = ww.WlanScan(handle, interface.guid)
 
-            except:
+            except BaseException:
                 print(sys.exc_info())
                 continue
 
@@ -31,7 +32,7 @@ class win_WiFi_class:
             try:
                 networks = ww.getWirelessAvailableNetworkList(interface)
 
-            except:
+            except BaseException:
                 print(sys.exc_info())
                 continue
 
@@ -50,7 +51,9 @@ class win_WiFi_class:
         #   str -- SSID
 
         # wifiの状況を確認するコマンドを実行する
-        cmd = ['/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport', '-I']
+        cmd = [
+            '/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport',
+            '-I']
         cmd_res = subprocess.run(cmd, stdout=subprocess.PIPE)
 
         # コマンドの実行結果をoutputに保存する

@@ -1,0 +1,10 @@
+{
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "files.autoGuessEncoding": true,
+    "files.eol": "\n",
+    "terminal.integrated.env.windows": {
+        "PATH": "${workspaceRoot}\\venv\\Scripts;${env:PATH}"
+    },
+    "python.pythonPath": "venv\\Scripts\\python.exe"
+}
