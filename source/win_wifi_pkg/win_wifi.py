@@ -1,8 +1,6 @@
-import subprocess
 import sys
-import re
-# from win32wifi import Win32Wifi as ww
-from win32wifi.Win32Wifi import *
+from win32wifi import Win32Wifi as ww
+# from win32wifi.Win32Wifi import *
 
 
 class win_WiFi_class:
@@ -43,28 +41,3 @@ class win_WiFi_class:
                     idx1, network.ssid.decode(), network.profile_name, network.connectable, network.signal_quality, network.flags, network.security_enabled, network.auth))
 
         ww.WlanCloseHandle(handle)
-
-    @staticmethod
-    def getUsingSSID():
-        # 現在接続中のWi-FiのSSIDを取得する
-        # returns:
-        #   str -- SSID
-
-        # wifiの状況を確認するコマンドを実行する
-        cmd = [
-            '/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport',
-            '-I']
-        cmd_res = subprocess.run(cmd, stdout=subprocess.PIPE)
-
-        # コマンドの実行結果をoutputに保存する
-        output = cmd_res.stdout.decode('utf-8')
-
-        # 文字列から、SSIDと書かれた部分を取得する
-        matchs = re.findall(r' +SSID: .+', output)
-        res = ""
-
-        if len(matchs) > 0:
-            res = matchs[0]
-            res = re.sub(r'^ +SSID: ', '', res)
-            res = res.rstrip()
-        return res

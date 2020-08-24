@@ -5,7 +5,7 @@
 import os
 import sys
 
-from win_wifi_pkg import win_WiFi_class as win
+from win_wifi_pkg.win_wifi import win_WiFi_class as win
 # from linux_wifi
 
 
@@ -45,11 +45,11 @@ print("your os = ", os.name)
 if os.name == "nt":
     WiFiUtil.view_os()
 
-    win.main()
+    WiFiUtil.win_main()
 
     # 現在のWiFiのSSIDを取得する
-    # res = WiFiUtil.getUsingSSID()
-    # print(res)
+    res = win.getUsingSSID()
+    print(res)
 
 # else:
 #     linux_main()
