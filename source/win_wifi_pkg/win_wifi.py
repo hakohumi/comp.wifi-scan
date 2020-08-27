@@ -41,3 +41,5 @@ class win_WiFi_class:
                     idx1, network.ssid.decode(), network.profile_name, network.connectable, network.signal_quality, network.flags, network.security_enabled, network.auth))
 
         ww.WlanCloseHandle(handle)
+
+    def WifiScan():
