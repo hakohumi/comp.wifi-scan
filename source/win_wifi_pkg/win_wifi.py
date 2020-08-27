@@ -43,3 +43,12 @@ class win_WiFi_class:
         ww.WlanCloseHandle(handle)
 
     def WifiScan():
+        try:
+            scan_result = ww.WlanScan(handle, interface.guid)
+
+        except BaseException:
+            print(sys.exc_info())
+
+        print("\n  Scan result: {:d}".format(scan_result))
+
+        print("scan end")
